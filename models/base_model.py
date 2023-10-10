@@ -36,8 +36,8 @@ class BaseModels:
 
     def __str__(self):
         """BaseModel string representation"""
-        return "[{}] ({}) {}".format(type(self).__name__,
-                self.id, self.__dict__)
+        return "[{}] ({}) {}".format(
+                type(self).__name__, self.id, self.__dict__)
 
     def __repr__(self):
         """returns the __str__"""
