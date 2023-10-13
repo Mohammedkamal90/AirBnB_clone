@@ -5,7 +5,7 @@ import models
 from datetime import datetime
 
 
-class BaseModels:
+class BaseModel:
     """the class BaseModel"""
     def __init__(self, *args, **kwargs):
         """initializing the class"""
