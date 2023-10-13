@@ -1,13 +1,26 @@
 #!/usr/bin/python3
 """ console """
-
 import cmd
 import json
 import uuid
+import ast
+import shlex
+from shlex import split
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+
 
 class HBNBCommand(cmd.Cmd):
+    """command interpreter (console)"""
     prompt = "(hbnb) "
+
+    classes = {
+            "BaseModel", "User", "State", "City", "Amenity", "Place", "Review"}
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -33,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
 
     def do_show(self, arg):
-        """Show the string representation of an instance based on class name and id"""
+        """Show string representation of instance based on class name/id"""
         args = arg.split()
         if not arg:
             print("** class name missing **")
@@ -50,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Delete an instance based on class name and id, then save the change to the JSON file"""
+        """Delete instance based on class name/id then save change to JSON"""
         args = arg.split()
         if not arg:
             print("** class name missing **")
@@ -72,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, arg):
-        """Print the string representation of all instances based on class name or all"""
+        """Print string repre. of all instances based on class name or all"""
         args = arg.split()
         objects = BaseModel.load_from_file()
         result = []
@@ -89,7 +102,7 @@ class HBNBCommand(cmd.Cmd):
         print(result)
 
     def do_update(self, arg):
-        """Update an instance based on class name and id with a new attribute value"""
+        """Update instance based on class name/id with new attribute value"""
         args = arg.split()
         if not arg:
             print("** class name missing **")
@@ -115,7 +128,6 @@ class HBNBCommand(cmd.Cmd):
                 obj_to_update.save()
             else:
                 print("** no instance found **")
-
 
 
 if __name__ == '__main__':
