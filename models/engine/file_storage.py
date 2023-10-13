@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """class serializes instances to JSON file & deserializes JSON to instances"""
 import json
-from models.base_models import BaseModel
+from models.base_model import BaseModel
 from models.user import User
 from models.state import State
 from models.city import City
