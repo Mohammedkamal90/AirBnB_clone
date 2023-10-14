@@ -129,6 +129,25 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+    def main():
+    while True:
+        user_input = input("(hbnb) ")
+        if user_input == "quit":
+            break
+        try:
+            parts = user_input.split('.')
+            if len(parts) == 2 and parts[1] == "all()":
+                class_name = parts[0]
+                if class_name in globals() and isinstance(globals()[class_name], type):
+                    instances = globals()[class_name].all()
+                    print(instances)
+                else:
+                    print(f"Class {class_name} not found.")
+            else:
+                # Handle other commands or user input here
+                pass
+        except Exception as e:
+            print(str(e))
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
