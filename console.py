@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-    def main():
+    """def main():
     while True:
         user_input = input("(hbnb) ")
         if user_input == "quit":
@@ -147,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
                 # Handle other commands or user input here
                 pass
         except Exception as e:
-            print(str(e))
+            print(str(e))"""
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
