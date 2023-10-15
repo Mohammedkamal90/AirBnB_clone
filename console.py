@@ -138,7 +138,8 @@ class HBNBCommand(cmd.Cmd):
             parts = user_input.split('.')
             if len(parts) == 2 and parts[1] == "all()":
                 class_name = parts[0]
-                if class_name in globals() and isinstance(globals()[class_name], type):
+                if class_name in globals() and
+                isinstance(globals()[class_name], type):
                     instances = globals()[class_name].all()
                     print(instances)
                 else:
@@ -148,6 +149,7 @@ class HBNBCommand(cmd.Cmd):
                 pass
         except Exception as e:
             print(str(e))"""
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
