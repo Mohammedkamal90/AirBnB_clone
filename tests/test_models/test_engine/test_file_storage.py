@@ -18,34 +18,33 @@ class TestFileStorage(unittest.TestCase):
     """testing file storage"""
     @classmethod
     def setUpClass(cls):
+        """setting up a user to test"""
         cls.usr = User()
-        cls.usr.first_name = "Andrew"
-        cls.usr.last_name = "Suh"
-        cls.usr.email = "andrew@gmail.com"
+        cls.usr.first_name = "Halima"
+        cls.usr.last_name = "Ela"
+        cls.usr.email = "halimaelabbadi@gmail.com"
         cls.storage = FileStorage()
 
     @classmethod
     def teardown(cls):
+        """to delete the setup user"""
         del cls.usr
 
     def teardown(self):
+        """to remove"""
         try:
             os.remove("file.json")
         except:
             pass
 
     def test_pep8_filestorage(self):
-        """
-        tests for pep8
-        """
+        """tests for pep8"""
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/engine/file_storage.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_all_filestorage(self):
-        """
-        tests for all
-        """
+        """tests for all cmd"""
         new = FileStorage()
         instances_dic = new.all()
         self.assertIsNotNone(instances_dic)
@@ -53,9 +52,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIs(instances_dic, new._FileStorage__objects)
 
     def test_new_filestorage(self):
-        """
-        tests for new
-        """
+        """tests for new fun"""
         altsotrage = FileStorage()
         dic = altsotrage.all()
         rev = User()
@@ -66,9 +63,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNotNone(dic[key])
 
     def test_reload_filestorage(self):
-        """
-        tests reload
-        """
+        """tests reload """
         self.storage.save()
         Root = os.path.dirname(os.path.abspath("console.py"))
         path = os.path.join(Root, "file.json")
