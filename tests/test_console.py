@@ -59,3 +59,6 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("quit")
             self.assertEqual('', f.getvalue())
+
+if __name__ == '__main__':
+    unittest.main()
