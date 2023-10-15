@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Tests city"""
+"""Tests User class"""
 import unittest
 import os
 import pep8
@@ -52,16 +52,19 @@ class TestUser(unittest.TestCase):
         self.assertTrue('last_name' in self.testUser.__dict__)
 
     def test_save(self):
+        """tests for save"""
         self.testUser.save()
         self.assertTrue(self.testUser.updated_at != self.testUser.created_at)
 
     def test_strings(self):
+        """tests strings"""
         self.assertEqual(type(self.testUser.email), str)
         self.assertEqual(type(self.testUser.password), str)
         self.assertEqual(type(self.testUser.first_name), str)
         self.assertEqual(type(self.testUser.first_name), str)
 
     def test_to_dict(self):
+        """tests dor dict"""
         self.assertEqual('to_dict' in dir(self.testUser), True)
 
 
