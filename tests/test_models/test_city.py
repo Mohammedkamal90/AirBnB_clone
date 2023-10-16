@@ -49,6 +49,7 @@ class TestCity(unittest.TestCase):
         self.assertIsNotNone(self.testCity.created_at)
 
     def test_save_city(self):
+        """tests for save func"""
         self.testCity.save()
         self.assertTrue(self.testCity.updated_at != self.testCity.created_at)
 
