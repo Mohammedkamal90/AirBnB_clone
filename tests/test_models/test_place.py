@@ -11,6 +11,7 @@ class TestPlace(unittest.TestCase):
     """tests for place"""
     @classmethod
     def setUpClass(cls):
+        """set up place to test"""
         cls.testPlace = Place()
         cls.testPlace.city_id = "whatever"
         cls.testPlace.user_id = "test"
@@ -27,6 +28,7 @@ class TestPlace(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        """delete the place we setup"""
         del cls.testPlace
         try:
             os.remove("file.json")
@@ -34,21 +36,23 @@ class TestPlace(unittest.TestCase):
             pass
 
     def test_pep8(self):
-        """tests pep8"""
+        """tests for pep8"""
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/place.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_docstrings(self):
-        """tests docstrings"""
+        """tests for docstrings"""
         self.assertTrue(len(Place.__doc__) > 0)
         for func in dir(Place):
             self.assertTrue(len(func.__doc__) > 0)
 
     def test_subclass(self):
+        """tests for subclass"""
         self.assertTrue(issubclass(self.testPlace.__class__, BaseModel), True)
 
     def test_attributes_and_init(self):
+        """tests init and attributes"""
         self.assertTrue(isinstance(self.testPlace, Place))
         self.assertTrue('id' in self.testPlace.__dict__)
         self.assertTrue('created_at' in self.testPlace.__dict__)
@@ -66,6 +70,7 @@ class TestPlace(unittest.TestCase):
         self.assertTrue('amenity_ids' in self.testPlace.__dict__)
 
     def test_has_strings(self):
+        """tests for strings"""
         self.assertEqual(type(self.testPlace.city_id), str)
         self.assertEqual(type(self.testPlace.user_id), str)
         self.assertEqual(type(self.testPlace.name), str)
@@ -79,11 +84,13 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(self.testPlace.amenity_ids), list)
 
     def test_save(self):
+        """test save func"""
         self.testPlace.save()
         self.assertNotEqual(self.testPlace.created_at,
                             self.testPlace.updated_at)
 
     def test_dict(self):
+        """tests dict"""
         self.assertEqual('to_dict' in dir(self.testPlace), True)
 
 
